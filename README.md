@@ -18,16 +18,16 @@ Currently the installer is in the works, so automatic installation is not suppor
 2. Install `noctalia` by following its [installation guide](https://docs.noctalia.dev/v4/getting-started/installation/)
 3. Install `sddm` and enable it by running `systemctl enable sddm`.
 4. Log into your account
-5. Go to Noctalia's `Settings>Color Scheme`, scroll down and click `Download More`. Find `Everforest` color theme and download and apply it
+5. Go to Noctalia's **Settings>Color Scheme**, scroll down and click **Download More**. Find `Everforest` color theme and download and apply it
 6. Install prerequisites for GTK and Qt themes `adw-gtk-theme`, `nwg-look`, `qt6ct`, `qt5ct`.
-7. Open `nwg-look` and go to `Preferences` tab, and untick `~/.config/gtk-4.0/*`. Also click the Clear button next to it.
+7. Open `nwg-look` and go to **Preferences** tab, and untick `~/.config/gtk-4.0/*`. Also click the Clear button next to it.
 8. Insert the following into `~/.config/niri/config.kdl`:
 ```
 environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
 }
 ```
-7. Go to Noctalia's `Settings>Color Scheme>Templates` and enable `GTK`, `Qt` and `Niri`. These generate GTK and Qt themes for apps based on those. 
+7. Go to Noctalia's **Settings>Color Scheme>Templates** and enable **GTK**, **Qt** and **Niri**. These generate GTK and Qt themes for apps based on those. 
 8. Enable `adw-gtk3-dark` in `nwg-look`.
 9. Open `qt6ct`, and go to **Color Scheme** tab. Select `noctalia` and click **Apply** and **OK**.
 10. Install some [Nerd Fonts](https://www.nerdfonts.com/).
