@@ -1,0 +1,6 @@
+millennium
+noctalia-shell
+paru
+paru-debug
+vesktop
+zen-browser-bin
