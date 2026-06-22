@@ -101,3 +101,6 @@ backupAndReplace "$homedir"/.local/share/Steam/steamui/skins/Material-Theme/css/
 
 # Fastfetch Configuration
 backupAndReplace "$homedir"/.config/fastfetch fastfetch
+
+# Neovim Configuration
+backupAndReplace "$homedir"/.config/neovim neovim
