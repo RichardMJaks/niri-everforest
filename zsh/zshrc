@@ -121,5 +121,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR="nvim"
+export PATH="/home/rikkss/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
