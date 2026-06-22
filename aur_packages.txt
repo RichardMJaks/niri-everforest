@@ -2,5 +2,7 @@ millennium
 noctalia-shell
 paru
 paru-debug
+qdigidoc4
 vesktop
 zen-browser-bin
+sddm-theme-noctalia
