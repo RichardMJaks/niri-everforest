@@ -9,35 +9,14 @@ printf "Create symlinks instead of replacement? [y/N]: "
 read create_symlinks
 create_symlinks=$(create_symlinks,,}
 
-backupAndReplace() {
-	local target_file="$1"
-	local replacement_file="$2"
-	# Validate args
-	if [ -z "$target_file" ] || [ -z "replacement_file" ]; then
-		echo "Usage: backupAndReplace target_file replacement_file"
-		return 1
-	fi
-	
-	echo "Replacing $target_file..."
-	# Create backup if file exists
-	if [ -e "$target_file" ]; then
-		sudo mv "$target_file" "$target_file".bkp
-	fi
 
-	# Replace the file
-	if [ create_symlinks -eq "y" ]; then
-		sudo ln -sr "$replacement_file" "$target_file"
-	else
-		sudo cp "$replacement_file" "$target_file"
-	fi
-}
 echo "Installing packages..."
 read sync_packages < sync_packages.txt
 read aur_packages < aur_packages.txt
 
 # Install required packages
-sudo pacman -S sync_packages
-sudo paru -S aur_packages
+pacman -S sync_packages
+paru -S aur_packages
 
 echo "Enabling wheel group in /etc/sudoers..."
 # Give sudo permissions to wheel group
@@ -65,17 +44,49 @@ useradd -m -G games,video,storage,kvm,input,audio,wheel -P "$password_initial" "
 
 homedir=$(eval echo ~"$username")
 
+backupAndReplace() {
+	local target_file="$1"
+	local replacement_file="$2"
+  local perms="$3"
+  local owners="$4"
+	# Validate args
+	if [ -z "$target_file" ] || [ -z "replacement_file" ]; then
+		echo "Usage: backupAndReplace target_file replacement_file"
+		return 1
+	fi
+	
+	echo "Replacing $target_file..."
+	# Create backup if file exists
+	if [ -e "$target_file" ]; then
+		sudo mv "$target_file" "$target_file".bkp
+	fi
+
+	# Replace the file
+	if [ create_symlinks -eq "y" ]; then
+		ln -sr "$replacement_file" "$target_file"
+	else
+		cp "$replacement_file" "$target_file"
+	fi
+
+  if [ -e "$perms" ]; then
+    chmod "$perms" "$target_file"
+  fi
+  
+  if [ -e "$owners" ]; then
+    chown "$owners" "$target_file"
+}
+
 # NetworkManager Setup
 echo "Enabling NetworkManager.service..."
 sudo systemctl enable --now NetworkManager.service
 
 # Polkit Setup
 echo "Setting polkit rules..."
-sudo cp polkit-1 /etc/
+cp polkit-1 /etc/
 echo "Setting udisks2 rules..."
-sudo cp udisks2 /etc/
+cp udisks2 /etc/
 echo "Enabling polkit.service..."
-sudo systemctl enable --now polkit.service
+systemctl enable --now polkit.service
 
 #{{{ ZSH Configuration
 echo "Setting zsh as default shell for the user..."
@@ -87,47 +98,47 @@ backupAndReplace "$homedir"/.zshrc zsh/zshrc
 
 # SDDM Setup
 echo "Enabling sddm.service..."
-sudo systemctl enable sddm.service
+systemctl enable sddm.service
 echo "Setting sddm theme to 'Noctalia'..."
 backupAndReplace /etc/sddm.conf sddm/sddm.conf
 echo "Setting permissions 666 for SDDM Noctalia theme.conf"
 chmod 666 /usr/share/sddm/themes/noctalia/theme.conf
 echo "Adding color sync for SDDM Greeter..."
-backupAndReplace noctalia_user/user-templates.toml ~/.config/noctalia/user-templates.toml
+backupAndReplace "$homedir"/.config/noctalia/user-templates.toml noctalia_user/user-templates.toml 644 "$username":"$username"
 echo "Setting permissions 666 to noctalia background..."
-sudo chmod 666 "/usr/share/sddm/themes/noctalia/Assets/background.png"
+chmod 666 "/usr/share/sddm/themes/noctalia/Assets/background.png"
 
 # Starship prompt
-backupAndReplace "$homedir"/.config/starship.toml starship/starship.toml
+backupAndReplace "$homedir"/.config/starship.toml starship/starship.toml 644 "$username":"$username"
 #}}}
 
 # Niri & Noctalia Configuration
-backupAndReplace "$homedir"/.config/noctalia noctalia
-backupAndReplace "$homedir"/.config/niri niri 
+backupAndReplace "$homedir"/.config/noctalia noctalia 644 "$username":"$username"
+backupAndReplace "$homedir"/.config/niri niri 644 "$username":"$username" 
 
 # GTK and Qt configuration
-backupAndReplace "$homedir"/.config/gtk-3.0 gtk/gtk-3.0
-backupAndReplace "$homedir"/.config/nwg-look/config nwg-look/config
-backupAndReplace "$homedir"/.config/qt5ct qt/qt5ct
-backupAndReplace "$homedir"/.config/qt6ct qt/qt6ct
+backupAndReplace "$homedir"/.config/gtk-3.0 gtk/gtk-3.0 644 "$username":"$username"
+backupAndReplace "$homedir"/.config/nwg-look/config nwg-look/config 644 "$username":"$username"
+backupAndReplace "$homedir"/.config/qt5ct qt/qt5ct 644 "$username":"$username"
+backupAndReplace "$homedir"/.config/qt6ct qt/qt6ct 644 "$username":"$username"
 
 # Kitty Configuration
-backupAndReplace "$homedir"/.config/kitty/kitty.conf kitty/kitty.conf
+backupAndReplace "$homedir"/.config/kitty/kitty.conf kitty/kitty.conf 644 "$username":"$username"
 
 # Vesktop Configuration
-backupAndReplace "$homedir"/.config/vesktop/themes/noctalia.theme.css vesktop/noctalia.theme.css
+backupAndReplace "$homedir"/.config/vesktop/themes/noctalia.theme.css vesktop/noctalia.theme.css 644 "$username":"$username"
 
 # Dolphin Configuration
-backupAndReplace "$homedir"/.config/dolphinrc dolphin/dolphinrc
+backupAndReplace "$homedir"/.config/dolphinrc dolphin/dolphinrc 644 "$username":"$username"
 
 # Steam Configuration
-backupAndReplace "$homedir"/.local/share/Steam/steamui/skins/Material-Theme/css/main/colors/matugen.css steam/matugen.css
+backupAndReplace "$homedir"/.local/share/Steam/steamui/skins/Material-Theme/css/main/colors/matugen.css steam/matugen.css 644 "$username":"$username"
 
 # Fastfetch Configuration
-backupAndReplace "$homedir"/.config/fastfetch fastfetch
+backupAndReplace "$homedir"/.config/fastfetch fastfetch 644 "$username":"$username"
 
 # Neovim Configuration
-backupAndReplace "$homedir"/.config/neovim neovim
+backupAndReplace "$homedir"/.config/neovim neovim 644 "$username":"$username"
 
 
 echo "Setup finished! Ensure that everything works correctly, and manually fix any problems."
