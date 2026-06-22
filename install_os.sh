@@ -98,3 +98,6 @@ backupAndReplace "$homedir"/.config/dolphinrc dolphin/dolphinrc
 
 # Steam Configuration
 backupAndReplace "$homedir"/.local/share/Steam/steamui/skins/Material-Theme/css/main/colors/matugen.css steam/matugen.css
+
+# Fastfetch Configuration
+backupAndReplace "$homedir"/.config/fastfetch fastfetch
