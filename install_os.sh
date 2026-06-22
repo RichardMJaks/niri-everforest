@@ -21,14 +21,14 @@ backupAndReplace() {
 	echo "Replacing $target_file..."
 	# Create backup if file exists
 	if [ -e "$target_file" ]; then
-		mv "$target_file" "$target_file".bkp
+		sudo mv "$target_file" "$target_file".bkp
 	fi
 
 	# Replace the file
 	if [ create_symlinks -eq "y" ]; then
-		ln -sr "$replacement_file" "$target_file"
+		sudo ln -sr "$replacement_file" "$target_file"
 	else
-		cp "$replacement_file" "$target_file"
+		sudo cp "$replacement_file" "$target_file"
 	fi
 }
 echo "Installing packages..."
@@ -65,6 +65,18 @@ useradd -m -G games,video,storage,kvm,input,audio,wheel -P "$password_initial" "
 
 homedir=$(eval echo ~"$username")
 
+# NetworkManager Setup
+echo "Enabling NetworkManager.service..."
+sudo systemctl enable --now NetworkManager.service
+
+# Polkit Setup
+echo "Setting polkit rules..."
+sudo cp polkit-1 /etc/
+echo "Setting udisks2 rules..."
+sudo cp udisks2 /etc/
+echo "Enabling polkit.service..."
+sudo systemctl enable --now polkit.service
+
 #{{{ ZSH Configuration
 echo "Setting zsh as default shell for the user..."
 runuser -l $username -c 'chsh -s $(which zsh)' # Set zsh as default shell for user
@@ -72,6 +84,18 @@ runuser -l $username -c 'chsh -s $(which zsh)' # Set zsh as default shell for us
 echo "Installing oh-my-zsh..."
 runuser -l "$username" -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 backupAndReplace "$homedir"/.zshrc zsh/zshrc
+
+# SDDM Setup
+echo "Enabling sddm.service..."
+sudo systemctl enable sddm.service
+echo "Setting sddm theme to 'Noctalia'..."
+backupAndReplace /etc/sddm.conf sddm/sddm.conf
+echo "Setting permissions 666 for SDDM Noctalia theme.conf"
+chmod 666 /usr/share/sddm/themes/noctalia/theme.conf
+echo "Adding color sync for SDDM Greeter..."
+backupAndReplace noctalia_user/user-templates.toml ~/.config/noctalia/user-templates.toml
+echo "Setting permissions 666 to noctalia background..."
+sudo chmod 666 "/usr/share/sddm/themes/noctalia/Assets/background.png"
 
 # Starship prompt
 backupAndReplace "$homedir"/.config/starship.toml starship/starship.toml
@@ -104,3 +128,6 @@ backupAndReplace "$homedir"/.config/fastfetch fastfetch
 
 # Neovim Configuration
 backupAndReplace "$homedir"/.config/neovim neovim
+
+
+echo "Setup finished! Ensure that everything works correctly, and manually fix any problems."
