@@ -1,0 +1,26 @@
+{
+  "iconType": "fold",
+  "byteThresholdActive": 5000,
+  "fontSizeModifier": 0.75,
+  "iconSizeModifier": 0.95,
+  "useCustomColors": true,
+  "useCustomFont": false,
+  "customFontBold": false,
+  "customFontItalic": false,
+  "columnSpacing": 0,
+  "rowSpacing": -8,
+  "paddingLeft": 10,
+  "paddingRight": 5,
+  "layout": "vertical",
+  "slots": [
+    "txSpeed",
+    "txIcon",
+    "rxSpeed",
+    "rxIcon"
+  ],
+  "customFontFamily": "FreeSans",
+  "colorTx": "#e67e80",
+  "colorRx": "#a7c080",
+  "colorSilent": "#7a8478",
+  "colorText": "#d3c6aa"
+}
