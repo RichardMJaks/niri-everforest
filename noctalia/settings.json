@@ -195,6 +195,9 @@
                     "id": "plugin:network-indicator"
                 },
                 {
+                    "id": "plugin:syncthing-status"
+                },
+                {
                     "colorizeIcons": false,
                     "hideMode": "hidden",
                     "id": "ActiveWindow",
