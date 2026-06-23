@@ -1,0 +1,9 @@
+librewolf/librewolf/*
+!librewolf/librewolf/profiles.ini
+!librewolf/librewolf/z2hxfkce.default-default/extensions.json
+!librewolf/librewolf/z2hxfkce.default-default/extensions-settings.json
+!librewolf/librewolf/z2hxfkce.default-default/extensions-preferences.json
+!librewolf/librewolf/z2hxfkce.default-default/extensions/
+!librewolf/librewolf/z2hxfkce.default-default/prefs.js
+
+
