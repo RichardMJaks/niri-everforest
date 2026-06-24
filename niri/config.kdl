@@ -5,6 +5,8 @@
 
 // Autostart
 spawn-at-startup "udiskie"
+spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-sh-at-startup "wayvnc --render-cursor"
 
 // Input device configuration.
 // Find the full list of options on the wiki:
@@ -288,7 +290,6 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
-spawn-sh-at-startup "qs -c noctalia-shell"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -661,6 +662,7 @@ debug {
 environment {
     QT_QPA_PLATFORMTHEME "qt6ct"
 }
+
 
 include "./noctalia.kdl"
 
