@@ -7,6 +7,7 @@
 spawn-at-startup "udiskie"
 spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "wayvnc --render-cursor"
+spawn-at-startup "hyprpolkitagent"
 
 // Input device configuration.
 // Find the full list of options on the wiki:
@@ -16,10 +17,9 @@ input {
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
+            options "fkeys:basic_13-24"
 
-            // For example:
-            // layout "us,ru"
-	    layout "gb,ee"
+            layout "gb,ee"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
 
             // If this section is empty, niri will fetch xkb settings
@@ -194,7 +194,7 @@ layout {
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#0000"
+        inactive-color "transparent"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -653,6 +653,9 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    F20 {spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder saveReplay"; }
+    Ctrl+F20 {spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggleReplay"; }
 }
 
 debug {
@@ -661,6 +664,8 @@ debug {
 
 environment {
     QT_QPA_PLATFORMTHEME "qt6ct"
+    XDG_CONFIG_HOME "/home/rikkss/.config"
+    XDG_DATA_HOME "/home/rikkss/.local/share/"
 }
 
 
