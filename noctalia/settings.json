@@ -6,7 +6,7 @@
         "clipboardWrapText": true,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
-        "density": "default",
+        "density": "compact",
         "enableClipPreview": true,
         "enableClipboardChips": true,
         "enableClipboardHistory": false,
@@ -19,7 +19,7 @@
         "overviewLayer": false,
         "pinnedApps": [
         ],
-        "position": "center",
+        "position": "top_left",
         "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
@@ -195,6 +195,16 @@
                     "id": "plugin:network-indicator"
                 },
                 {
+                    "defaultSettings": {
+                        "apiKey": "",
+                        "apiUrl": "",
+                        "configPath": "",
+                        "enabled": true,
+                        "folderIds": [
+                        ],
+                        "pollIntervalMs": 10000,
+                        "verifyTls": false
+                    },
                     "id": "plugin:syncthing-status"
                 },
                 {
@@ -652,7 +662,7 @@
         "notifyUpdates": true
     },
     "sessionMenu": {
-        "countdownDuration": 10000,
+        "countdownDuration": 3000,
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": true,

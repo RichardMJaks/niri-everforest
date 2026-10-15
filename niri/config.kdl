@@ -5,8 +5,7 @@
 
 // Autostart
 spawn-at-startup "udiskie"
-spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "wayvnc --render-cursor"
+spawn-sh-at-startup "noctalia"
 spawn-at-startup "hyprpolkitagent"
 
 // Input device configuration.
@@ -295,7 +294,7 @@ layout {
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -343,7 +342,7 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"librewolf$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -384,12 +383,12 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    // Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-    Mod+R hotkey-overlay-title="Open Application Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu lock"; }
+    Mod+R hotkey-overlay-title="Open Application Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -528,7 +527,7 @@ binds {
     // These binds are also affected by touchpad's natural-scroll, so these
     // example binds are "inverted", since we have natural-scroll enabled for
     // touchpads by default.
-    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
+    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }  honor-xdg-activation-with-invalid-serial
     // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
     // You can refer to workspaces by index. However, keep in mind that
@@ -648,14 +647,14 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Shift+E { spawn-sh "noctalia msg panel-toggle session"; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
-    F20 {spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder saveReplay"; }
-    Ctrl+F20 {spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggleReplay"; }
+    F20 {spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all replay-save"; }
+    Ctrl+F20 {spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all replay-toggle"; }
 }
 
 debug {
