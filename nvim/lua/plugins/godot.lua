@@ -1,26 +1,10 @@
 return {
     { "habamax/vim-godot" },
     { "skywind3000/asyncrun.vim" },
-    { "teatek/gdscript-extended-lsp.nvim", opts = { view_type = "floating", picker = "snacks" } },
-    {
-        "folke/snacks.nvim",
-        opts = {
-            picker = {
-                sources = {
-                    explorer = {
-                        hidden = true, -- show hidden files
-                        ignored = false, -- don't show gitignored files
-                        exclude = { -- exclude specific patterns
-                            "*.uid", -- glob pattern for files ending with .uid
-                            "server.pipe", -- exact filename match
-                        },
-                    },
-                },
-            },
-        },
-    },
+    { "teatek/gdscript-extended-lsp.nvim", opts = { view_type = "floating", picker = "telescope" } },
     {
         "nvim-neo-tree/neo-tree.nvim",
+        ft = "gdscript",
         opts = {
             filesystem = {
                 filtered_items = {
@@ -32,4 +16,15 @@ return {
             },
         },
     },
+    {
+        "mfussenegger/nvim-dap",
+        opts = function()
+            local dap = require("dap")
+            dap.adapters.godot = { type = "server", host = "127.0.0.1", port = 6006 }
+            dap.configurations.gdscript = {
+                { type = "godot", request = "launch", name = "Launch scene", project = "${workspaceFolder}" },
+            }
+        end,
+    },
+    { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = { "gdscript" } } },
 }

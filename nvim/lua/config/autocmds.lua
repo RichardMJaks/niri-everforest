@@ -7,7 +7,7 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- Start Godot LSP
+-- Start Godot LSP & Configure to match GDScript syntax
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "gdscript",
     callback = function()
@@ -20,13 +20,8 @@ vim.api.nvim_create_autocmd("FileType", {
             cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
             root_dir = root,
         })
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "gdscript",
-    callback = function()
-        vim.opt_local.foldmethod = "indent"
+        vim.opt_local.foldmethod = "expr"
+        vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         vim.opt.foldlevelstart = 0
     end,
 })
