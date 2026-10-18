@@ -1,0 +1,32 @@
+=== gpu-screen-recorder replay 2026-10-15 17:08:34 ===
+gsr info: option '-w portal' was used without '-restore-portal-session yes'. The previous screencast session will be ignored
+gsr info: gsr_capture_portal_setup_dbus: CreateSession
+gsr info: gsr_capture_portal_setup_dbus: SelectSources
+gsr warning: gsr_dbus_screencast_select_sources: cursor mode metadata is not available, using cursor mode embedded instead
+gsr info: gsr_capture_portal_setup_dbus: Start
+gsr info: gsr_capture_portal_save_restore_token: saved restore token to cache (tbX76cS9KLIFLfzdloK3ZA)
+gsr info: gsr_capture_portal_setup_dbus: OpenPipeWireRemote
+gsr info: gsr_capture_portal_setup_dbus: desktop portal setup finished
+gsr info: gsr_capture_portal_setup: setting up pipewire
+gsr info: pipewire: server version: 1.6.9
+gsr info: pipewire: library version: 1.6.9
+gsr info: pipewire: header version: 1.6.9
+gsr info: pipewire: stream 0x563440fe8fd0 previous state: "unconnected", new state: "connecting" (error: none)
+gsr info: gsr_capture_portal_setup: pipewire setup finished
+gsr info: gsr_capture_portal_start: waiting for pipewire negotiation
+gsr info: pipewire: stream 0x563440fe8fd0 previous state: "connecting", new state: "paused" (error: none)
+gsr info: pipewire: negotiated format:
+gsr info: pipewire:    Format: 8 (Spa:Enum:VideoFormat:BGRx)
+gsr info: pipewire:    Modifier: 0x0
+gsr info: pipewire:    Size: 2560x1440
+gsr info: pipewire:    Framerate: 0/1
+gsr info: pipewire: negotiated format:
+gsr info: pipewire:    Format: 8 (Spa:Enum:VideoFormat:BGRx)
+gsr info: pipewire:    Modifier: 0x300000000e08014
+gsr info: pipewire:    Size: 2560x1440
+gsr info: pipewire:    Framerate: 0/1
+gsr info: pipewire: stream 0x563440fe8fd0 previous state: "paused", new state: "streaming" (error: none)
+gsr info: gsr_capture_portal_start: pipewire negotiation finished
+[h264_nvenc @ 0x5634411ac680] ignoring invalid SAR: 0/0
+gsr info: pipewire: stream 0x563440fe8fd0 previous state: "streaming", new state: "paused" (error: none)
+gsr info: pipewire: stream 0x563440fe8fd0 previous state: "paused", new state: "unconnected" (error: none)

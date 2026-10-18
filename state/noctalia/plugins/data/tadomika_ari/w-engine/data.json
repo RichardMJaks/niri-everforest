@@ -1,0 +1,62 @@
+{
+  "current": {
+    "DP-1": "3018110149",
+    "DP-2": "3018110149",
+    "DP-3": "3018110149"
+  },
+  "cycle": {
+    "DP-1": {
+      "enabled": false,
+      "minutes": 15,
+      "order": "sequential"
+    },
+    "DP-2": {
+      "enabled": false,
+      "minutes": 15,
+      "order": "sequential"
+    },
+    "DP-3": {
+      "enabled": false,
+      "minutes": 15,
+      "order": "sequential"
+    }
+  },
+  "defaults": {
+    "engine": {
+      "layer": "background"
+    }
+  },
+  "favorites": [
+    {
+      "name": "Marshmallow Mushling",
+      "nb": "2985464274",
+      "path": "/home/rikkss/.local/state/noctalia/plugins/data/tadomika_ari/w-engine/thumbs/2985464274.jpg"
+    },
+    {
+      "name": "Cozy Campfire by Abi Toads",
+      "nb": "3582809467",
+      "path": "~/.local/share/Steam/steamapps/workshop/content/431960/3582809467/preview.gif"
+    },
+    {
+      "name": "Cozy Frog by Abi Toads",
+      "nb": "3135168049",
+      "path": "/home/rikkss/.local/state/noctalia/plugins/data/tadomika_ari/w-engine/thumbs/3135168049.jpg"
+    },
+    {
+      "name": "Land Of Art",
+      "nb": "3173535650",
+      "path": "/home/rikkss/.local/state/noctalia/plugins/data/tadomika_ari/w-engine/thumbs/3173535650.jpg"
+    }
+  ],
+  "options": {
+    "3205719838": {
+      "engine": {
+        "layer": "background"
+      },
+      "properties": {}
+    }
+  },
+  "personnalPath": {},
+  "saved_wallpaper": {},
+  "selection": {}
+}
