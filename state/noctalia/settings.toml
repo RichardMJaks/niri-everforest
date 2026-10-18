@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [audio]
 sound_theme = "ocean"
@@ -11,8 +11,18 @@ background_opacity = 0.75999998301267624
 capsule_fill = "primary"
 capsule_foreground = "on_primary"
 capsule_thickness = 0.71999998763203621
-center = [ "workspaces", "ribbon", "bar", "mirror", "recorder" ]
-end = [ "tray", "widget", "w-engine-widget", "mirror_2", "notifications", "network", "bluetooth", "volume", "clock" ]
+center = ["workspaces", "ribbon", "bar", "mirror", "recorder"]
+end = [
+  "tray",
+  "w-engine-widget",
+  "notifications",
+  "network",
+  "bluetooth",
+  "keybinds",
+  "volume",
+  "battery",
+  "clock",
+]
 margin_ends = 16
 padding = 16
 panel_overlap = 0
@@ -20,7 +30,15 @@ radius = 32
 radius_top_left = 0
 radius_top_right = 0
 shadow = false
-start = [ "control-center", "launcher", "network_rx", "network_tx", "cpu", "temp", "ram" ]
+start = [
+  "control-center",
+  "launcher",
+  "network_rx",
+  "network_tx",
+  "cpu",
+  "temp",
+  "ram",
+]
 thickness = 28
 widget_spacing = 12
 
@@ -50,113 +68,149 @@ type = "system"
 radius_top_right = 11
 
 [idle]
-behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
+behavior_order = ["screen-off", "lock", "lock-and-suspend"]
 
-    [idle.behavior.lock]
-    action = "lock"
-    enabled = true
-    timeout = 600.0
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 600.0
 
-    [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    enabled = false
-    timeout = 900.0
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = false
+timeout = 900.0
 
-    [idle.behavior.screen-off]
-    action = "screen_off"
-    enabled = true
-    timeout = 300.0
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 300.0
 
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
+widget_order = [
+  "lockscreen-login-box@eDP-1",
+  "lockscreen-login-box@DP-3",
+  "lockscreen-login-box@DP-2",
+  "lockscreen-login-box@DP-1",
+]
 
-    [lockscreen_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "DP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 960.0
+cy = 898.0
+output = "DP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 1018.0
-    output = "DP-2"
-    placement_height = 1200.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+box_height = 196.0
+box_width = 810.0
+cx = 960.0
+cy = 1018.0
+output = "DP-2"
+placement_height = 1200.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 1280.0
-    cy = 1258.0
-    output = "DP-3"
-    placement_height = 1440.0
-    placement_width = 2560.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+box_height = 196.0
+box_width = 810.0
+cx = 1280.0
+cy = 1258.0
+output = "DP-3"
+placement_height = 1440.0
+placement_width = 2560.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 841.0
+cy = 869.0
+output = "eDP-1"
+placement_height = 1051.0
+placement_width = 1682.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
 [notification]
 background_opacity = 0.99999997764825821
@@ -195,69 +249,77 @@ panel_placement = "attached"
 
 [plugins]
 enabled = [
-    "noctalia/screen_recorder",
-    "kenn/keybind-cheatsheet",
-    "rylos/syncthing",
-    "ramosdetrigo/godot-provider",
-    "yocraft/qrcode",
-    "luochen1990/niri-ribbon",
-    "abuamar142/qr-share",
-    "aristides/udiskie",
-    "tordex/xwayland",
-    "elijaharch/wl-screen-mirror",
-    "tadomika_ari/w-engine",
-    "samuelskovbakke/calculator-plus",
-    "weinguyen/procmon"
+  "noctalia/screen_recorder",
+  "kenn/keybind-cheatsheet",
+  "rylos/syncthing",
+  "ramosdetrigo/godot-provider",
+  "yocraft/qrcode",
+  "luochen1990/niri-ribbon",
+  "abuamar142/qr-share",
+  "aristides/udiskie",
+  "tordex/xwayland",
+  "elijaharch/wl-screen-mirror",
+  "tadomika_ari/w-engine",
+  "samuelskovbakke/calculator-plus",
+  "weinguyen/procmon",
 ]
 
 [shell]
 clipboard_auto_paste = "off"
 niri_overview_type_to_launch_enabled = true
 
-    [shell.launcher]
-    categories = false
-    compact = true
+[shell.launcher]
+categories = false
+compact = true
 
-        [shell.launcher.providers.wallpaper]
-        prefix = "\\"
+[shell.launcher.providers.wallpaper]
+prefix = "\\"
 
-    [shell.panel]
-    launcher_placement = "attached"
-    launcher_position = "auto"
-    open_near_click_control_center = true
-    open_near_click_launcher = true
+[shell.panel]
+launcher_placement = "attached"
+launcher_position = "auto"
+open_near_click_control_center = true
+open_near_click_launcher = true
 
-    [shell.screenshot]
-    remember_last_region = true
+[shell.screenshot]
+remember_last_region = true
 
-    [shell.window_switcher]
-    current_workspace_only = true
+[shell.window_switcher]
+current_workspace_only = true
 
 [theme]
 custom_palette = "Nature-Teal"
 source = "custom"
 
-    [theme.templates]
-    builtin_ids = [ "gtk3", "gtk4", "kitty", "niri", "qt", "starship" ]
-    community_ids = [ "discord", "gimp", "inkscape", "libreoffice", "neovim", "obsidian", "steam" ]
+[theme.templates]
+builtin_ids = ["gtk3", "gtk4", "kitty", "niri", "qt", "starship"]
+community_ids = [
+  "discord",
+  "gimp",
+  "inkscape",
+  "libreoffice",
+  "neovim",
+  "obsidian",
+  "steam",
+]
 
 [wallpaper]
 directory = "/home/rikkss/Pictures/Wallpapers"
 
-    [wallpaper.default]
-    path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
+[wallpaper.default]
+path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
 
-    [wallpaper.last]
-    path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
+[wallpaper.last]
+path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
 
-    [wallpaper.monitors.DP-1]
-    path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
+[wallpaper.monitors.DP-1]
+path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
 
-    [wallpaper.monitors.DP-2]
-    path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
+[wallpaper.monitors.DP-2]
+path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
 
-    [wallpaper.monitors.DP-3]
-    path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
+[wallpaper.monitors.DP-3]
+path = "/home/rikkss/Pictures/Wallpapers/futuristic_green.png"
 
 [widget.bar]
 enable_scroll = false
@@ -339,3 +401,4 @@ font_family = "0xProto Nerd Font Mono"
 font_weight = 700
 hide_when_empty = true
 occupied_color = "on_primary"
+
