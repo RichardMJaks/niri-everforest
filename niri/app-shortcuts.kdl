@@ -1,0 +1,15 @@
+binds {
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+    Mod+R hotkey-overlay-title="Open Application Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Ctrl+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
+
+    Mod+F1 hotkey-overlay-title="Open Cheatsheet" { spawn-sh "noctalia msg panel-toggle kenn/keybind-cheatsheet:cheatsheet"; }
+
+    Mod+F3 hotkey-overlay-title="Open Process Monitor" { spawn-sh "noctalia msg panel-toggle weinguyen/procmon:panel"; }
+
+    Ctrl+F20 hotkey-overlay-title="Start Replay Buffer" {spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all replay-toggle"; }
+    F20 hotkey-overlay-title="Save Replay" {spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all replay-save"; }
+
+    Mod+Alt+C hotkey-overlay-title="Open Calculator" { spawn-sh "noctalia msg panel-toggle samuelskovbakke/calculator-plus:panel"; }
+}

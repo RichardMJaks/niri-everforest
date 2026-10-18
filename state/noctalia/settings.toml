@@ -12,7 +12,7 @@ capsule_fill = "primary"
 capsule_foreground = "on_primary"
 capsule_thickness = 0.71999998763203621
 center = [ "workspaces", "ribbon", "bar", "mirror", "recorder" ]
-end = [ "tray", "w-engine-widget", "notifications", "network", "bluetooth", "keybinds", "volume", "clock" ]
+end = [ "tray", "widget", "w-engine-widget", "mirror_2", "notifications", "network", "bluetooth", "volume", "clock" ]
 margin_ends = 16
 padding = 16
 panel_overlap = 0
@@ -20,7 +20,7 @@ radius = 32
 radius_top_left = 0
 radius_top_right = 0
 shadow = false
-start = [ "control-center", "launcher", "network_rx", "network_tx" ]
+start = [ "control-center", "launcher", "network_rx", "network_tx", "cpu", "temp", "ram" ]
 thickness = 28
 widget_spacing = 12
 
@@ -172,6 +172,10 @@ border_width = 1.5
 position = "top_right"
 position_vertical = "top_right"
 
+[plugin_settings."kenn/keybind-cheatsheet"]
+cheatsheet_placement = "attached"
+compositor = "niri"
+
 [plugin_settings."noctalia/screen_recorder"]
 hide_inactive = true
 replay_enabled = true
@@ -180,6 +184,14 @@ replay_enabled = true
 sync_colors = false
 w-engine-panel_open_near_click = true
 w-engine-panel_placement = "attached"
+
+[plugin_settings."tordex/processes"]
+panel_layer = "overlay"
+process_hover_color = "primary"
+sort_column_color = "primary"
+
+[plugin_settings."weinguyen/procmon"]
+panel_placement = "attached"
 
 [plugins]
 enabled = [
@@ -190,11 +202,12 @@ enabled = [
     "yocraft/qrcode",
     "luochen1990/niri-ribbon",
     "abuamar142/qr-share",
-    "yangkx/usbeehive",
     "aristides/udiskie",
     "tordex/xwayland",
     "elijaharch/wl-screen-mirror",
-    "tadomika_ari/w-engine"
+    "tadomika_ari/w-engine",
+    "samuelskovbakke/calculator-plus",
+    "weinguyen/procmon"
 ]
 
 [shell]
@@ -221,8 +234,12 @@ niri_overview_type_to_launch_enabled = true
     current_workspace_only = true
 
 [theme]
-custom_palette = "Everforest"
+custom_palette = "Nature-Teal"
 source = "custom"
+
+    [theme.templates]
+    builtin_ids = [ "gtk3", "gtk4", "kitty", "niri", "qt", "starship" ]
+    community_ids = [ "discord", "gimp", "inkscape", "libreoffice", "neovim", "obsidian", "steam" ]
 
 [wallpaper]
 directory = "/home/rikkss/Pictures/Wallpapers"
@@ -258,15 +275,14 @@ timezone = "Europe/Tallinn"
 
 [widget.control-center]
 capsule = true
+enabled = false
 glyph = "flask-2-filled"
-
-[widget.keybinds]
-type = "kenn/keybind-cheatsheet:keybinds"
 
 [widget.launcher]
 capsule = true
 capsule_border_width = 0.0
 capsule_radius = "auto"
+enabled = false
 glyph = "braces"
 
 [widget.media]
@@ -275,6 +291,9 @@ enabled = false
 [widget.mirror]
 enable_scroll = false
 enabled = false
+type = "elijaharch/wl-screen-mirror:mirror"
+
+[widget.mirror_2]
 type = "elijaharch/wl-screen-mirror:mirror"
 
 [widget.network]
@@ -300,8 +319,14 @@ enabled = false
 drawer = true
 match_adjacent_spacing = true
 
+[widget.volume]
+mute_color = "outline"
+
 [widget.w-engine-widget]
 type = "tadomika_ari/w-engine:w-engine-widget"
+
+[widget.widget]
+type = "yocraft/qrcode:widget"
 
 [widget.workspaces]
 capsule = true
