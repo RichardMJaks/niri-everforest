@@ -46,20 +46,24 @@ return {
             lualine_b = { "branch", "diff", "diagnostics" },
             lualine_c = { "filename" },
             lualine_x = { "%S" },
-            lualine_y = { "progress", "location" },
-            lualine_z = { "fileformat" },
+            lualine_y = { "progress", "location", "fileformat" },
+            lualine_z = {},
         },
         inactive_sections = {},
         tabline = {
             lualine_b = {
-                { "buffers", disabled_buftypes = { "nofile", "" }, symbols = { alternate_file = "󰮲 " } },
+                {
+                    "buffers",
+                    disabled_buftypes = { "nofile" },
+                    symbols = { alternate_file = "󰮲 ", modified = "🖋" },
+                },
             },
         },
         winbar = {
             lualine_a = {
                 { "filename", separator = { left = "", right = "" }, padding = 1 },
             },
-            lualine_x = {
+            lualine_y = {
                 { "encoding", separator = "", padding = 1 },
                 { "filetype", separator = "", padding = 0 },
                 { "fileformat", separator = "", padding = 1 },
