@@ -1,3 +1,8 @@
+local function hl(name, attr)
+    local h = vim.api.nvim_get_hl(0, { name = name, link = false })
+    return h[attr] and string.format("#%06x", h[attr]) or nil
+end
+
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -6,16 +11,17 @@ return {
         options = {
             icons_enabled = true,
             theme = "auto",
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
+            section_separators = { left = "◗", right = "◖" },
             disabled_filetypes = {
                 statusline = {},
-                winbar = {},
+                tabline = {},
+                winbar = { "neo-tree" },
             },
             ignore_focus = {},
             always_divide_middle = true,
             always_show_tabline = true,
-            globalstatus = true,
+            globalstatus = false,
             refresh = {
                 statusline = 1000,
                 tabline = 1000,
@@ -39,21 +45,31 @@ return {
             lualine_a = { "mode" },
             lualine_b = { "branch", "diff", "diagnostics" },
             lualine_c = { "filename" },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "progress" },
-            lualine_z = { "location" },
+            lualine_x = { "%S" },
+            lualine_y = { "progress", "location" },
+            lualine_z = { "fileformat" },
         },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { "filename" },
-            lualine_x = { "location" },
-            lualine_y = {},
-            lualine_z = {},
+        inactive_sections = {},
+        tabline = {
+            lualine_b = {
+                { "buffers", disabled_buftypes = { "nofile", "" }, symbols = { alternate_file = "󰮲 " } },
+            },
         },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {},
+        winbar = {
+            lualine_a = {
+                { "filename", separator = { left = "", right = "" }, padding = 1 },
+            },
+            lualine_x = {
+                { "encoding", separator = "", padding = 1 },
+                { "filetype", separator = "", padding = 0 },
+                { "fileformat", separator = "", padding = 1 },
+            },
+        },
+        inactive_winbar = {
+            lualine_a = {
+                { "filename", separator = { left = "", right = "" }, padding = 1 },
+            },
+        },
+        extensions = { "neo-tree", "fugitive" },
     },
 }

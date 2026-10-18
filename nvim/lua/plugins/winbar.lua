@@ -1,6 +1,7 @@
 return {
     {
         "ramilito/winbar.nvim",
+        enabled = false,
         event = "VimEnter", -- Alternatively, BufReadPre if we don't care about the empty file when starting with 'nvim'
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
@@ -12,7 +13,7 @@ return {
                 buf_modified_symbol = "●",
                 -- or use an icon
                 -- buf_modified_symbol = "●"
-                background_color = "Winbar",
+                background_color = "Statusline",
                 -- or use a hex code:
                 -- background_color = "#141415",
                 -- or a different highlight:
@@ -30,6 +31,11 @@ return {
                 -- exclude_if = function()
                 --   return vim.w.magenta == true
                 -- end
+            })
+            vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+                callback = function()
+                    vim.wo.winbar = "%#WinBar#%t%*"
+                end,
             })
         end,
     },
