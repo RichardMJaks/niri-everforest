@@ -1,8 +1,3 @@
-local function hl(name, attr)
-    local h = vim.api.nvim_get_hl(0, { name = name, link = false })
-    return h[attr] and string.format("#%06x", h[attr]) or nil
-end
-
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -56,12 +51,15 @@ return {
                     "buffers",
                     disabled_buftypes = { "nofile" },
                     symbols = { alternate_file = "󰮲 ", modified = "🖋" },
+                    buffers_color = {
+                        active = "lualine_a_normal",
+                    },
                 },
             },
         },
         winbar = {
             lualine_a = {
-                { "filename", separator = { left = "", right = "" }, padding = 1 },
+                { "filename", padding = 1 },
             },
             lualine_y = {
                 { "encoding", separator = "", padding = 1 },

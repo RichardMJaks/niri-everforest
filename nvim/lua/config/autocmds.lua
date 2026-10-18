@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end)
     end,
 })
+
 -- Relist an unnamed buffer if it has modifications
 -- Preceding autocmd removes it from buffer as soon as buffer is entered,
 -- so this workaround is required
@@ -47,5 +48,14 @@ vim.api.nvim_create_autocmd("BufModifiedSet", {
         if vim.api.nvim_buf_get_name(b) == "" and vim.bo[b].buftype == "" and vim.bo[b].modified then
             vim.bo[b].buflisted = true
         end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "VimEnter", "BufAdd", "BufEnter", "BufDelete", "BufWipeout" }, {
+    callback = function()
+        vim.schedule(function()
+            local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+            vim.o.showtabline = (#buffers >= 2) and 2 or 0
+        end)
     end,
 })
