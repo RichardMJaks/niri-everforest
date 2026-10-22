@@ -1,4 +1,4 @@
-librewolf/librewolf/*
+librewolf/librewolf/
 !librewolf/librewolf/profiles.ini
 # Have to rematch this folder to instead unmatch with a wildcard so the contents would still be available
 !librewolf/librewolf/z2hxfkce.default-default/
