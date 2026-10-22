@@ -1,7 +1,12 @@
 {
   "Applications": {
-    "/usr/share/applications/librewolf.desktop": 3,
+    "/home/rikkss/.local/share/applications/vlc.desktop": 8,
+    "/usr/share/applications/chromium.desktop": 2,
+    "/usr/share/applications/librewolf.desktop": 7,
+    "/usr/share/applications/org.godotengine.Godot.desktop": 2,
+    "/usr/share/applications/org.keepassxc.KeePassXC.desktop": 2,
+    "/usr/share/applications/org.pulseaudio.pavucontrol.desktop": 1,
     "/usr/share/applications/steam.desktop": 2,
-    "/usr/share/applications/vesktop.desktop": 1
+    "/usr/share/applications/vesktop.desktop": 2
   }
 }

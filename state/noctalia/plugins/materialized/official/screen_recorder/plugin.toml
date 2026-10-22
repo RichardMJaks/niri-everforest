@@ -4,7 +4,7 @@
 # mirror the recorder's "status" and drive it through the "command" channel - so a
 # recording can be started even with no widget placed.
 #
-# Click mapping (widget): left = toggle recording, right = replay toggle/save,
+# Click mapping (widget): left = stop capture/start recording, right = replay toggle/save,
 # middle = save replay. The shortcut mirrors left/right.
 #
 # Settings are plugin-level ([[setting]] at the root): one set shared by every
@@ -12,8 +12,8 @@
 
 id = "noctalia/screen_recorder"
 name = "Screen Recorder"
-version = "1.4.0"
-plugin_api = 3
+version = "1.4.1"
+plugin_api = 17
 author = "noctalia"
 license = "MIT"
 dependencies = ["gpu-screen-recorder", "slurp"]

@@ -1,9 +1,21 @@
-librewolf/librewolf/*
+librewolf/librewolf/
 !librewolf/librewolf/profiles.ini
 !librewolf/librewolf/z2hxfkce.default-default/extensions.json
 !librewolf/librewolf/z2hxfkce.default-default/extensions-settings.json
 !librewolf/librewolf/z2hxfkce.default-default/extensions-preferences.json
 !librewolf/librewolf/z2hxfkce.default-default/extensions/
 !librewolf/librewolf/z2hxfkce.default-default/prefs.js
-
+state/noctalia/community-templates
+state/noctalia/notification_history.json
+state/noctalia/recently_used.json
+state/noctalia/plugins/data/kenn/keybind-cheatsheet/bindings-cache.json
+state/noctalia/usage_counts.json
+state/noctalia/state.toml
+state/noctalia/plugins/data/tadomika_ari/w-engine/
+state/noctalia/plugins/sources/
+state/noctalia/libreoffice-theme-staging/
+niri/monitor.kdl
+niri/monitor.kdl.bkp
+niri/monitor.kdl.bak
+nvim/lua/matugen.lua
 
