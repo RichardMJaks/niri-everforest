@@ -7,7 +7,6 @@ librewolf/librewolf/z2hxfkce.default-default/*
 !librewolf/librewolf/z2hxfkce.default-default/extension-settings.json
 !librewolf/librewolf/z2hxfkce.default-default/extension-preferences.json
 !librewolf/librewolf/z2hxfkce.default-default/extensions/
-!librewolf/librewolf/z2hxfkce.default-default/prefs.js
 state/noctalia/notification_history_assets/
 state/noctalia/community-templates/
 state/noctalia/notification_history.json
